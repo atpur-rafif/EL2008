@@ -1,4 +1,4 @@
-#define MAX_STRING 100
+#define MAX_STRING 20 // hemat memori di arduino
 
 struct Barang {
     int id;

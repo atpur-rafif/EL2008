@@ -1,7 +1,7 @@
 SOURCE_PATH=src
 OBJECT_PATH=out
 
-FILE=_main
+FILE=_main output
 FILE_O=$(addprefix $(OBJECT_PATH)/,$(addsuffix .o,$(FILE)))
 
 $(OBJECT_PATH)/%.o: $(SOURCE_PATH)/%.c
