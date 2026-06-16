@@ -5,7 +5,6 @@ FILE=main add
 FILE_O=$(addprefix $(OBJECT_PATH)/,$(addsuffix .o,$(FILE)))
 
 $(OBJECT_PATH)/%.o: $(SOURCE_PATH)/%.c
-	@mkdir -p $(@D)
 	gcc -c -o $@ $<
 
 link: $(FILE_O)

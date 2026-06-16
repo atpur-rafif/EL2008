@@ -1,2 +1,3 @@
-out
-program
+program*
+out/*.o
+.vscode
