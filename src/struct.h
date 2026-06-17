@@ -12,5 +12,4 @@ struct Barang {
 struct List {
     struct Barang* barang;
     struct List* next;
-    struct List* prev;
 };
