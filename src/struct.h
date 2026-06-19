@@ -1,3 +1,6 @@
+#ifndef STRUCT_H
+#define STRUCT_H
+
 #define MAX_STRING 20
 
 struct Barang {
@@ -13,3 +16,5 @@ struct List {
     struct Barang* barang;
     struct List* next;
 };
+
+#endif

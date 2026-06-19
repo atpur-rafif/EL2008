@@ -16,6 +16,11 @@ void deleteBarang(struct List** list, int id, struct Barang** barang){
 	while(current->next != NULL && current->next->barang->id != id)
 		current = current->next;
 
+	if (current->next == NULL) {
+        *barang = NULL;
+        return;
+    }
+
 	struct List* item = current->next;
 	current->next = item->next;
 	*barang = item->barang;

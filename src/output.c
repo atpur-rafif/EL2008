@@ -4,20 +4,20 @@
 
 void getCategStr(int cat, char* cate) {
     switch (cat) {
-        case 1: strcpy(cate, "Sensor");
-        case 2: strcpy(cate, "Mikrokontroler");
-        case 3: strcpy(cate, "Lainnya");
-        default: strcpy(cate, "Undefined");
+        case 1: strcpy(cate, "Sensor"); break;
+        case 2: strcpy(cate, "Mikrokontroler"); break;
+        case 3: strcpy(cate, "Lainnya"); break;
+        default: strcpy(cate, "Undefined"); break;
     }
 }
 
 void getStatusStr(int sta, char* stat) {
     switch (sta) {
-        case 0: strcpy(stat, "Habis");
-        case 1: strcpy(stat, "Tersedia");
-        case 2: strcpy(stat, "Dipinjam");
-        case 3: strcpy(stat, "Rusak");
-        default: strcpy(stat, "Undefined");
+        case 0: strcpy(stat, "Habis"); break;
+        case 1: strcpy(stat, "Tersedia"); break;
+        case 2: strcpy(stat, "Dipinjam"); break;
+        case 3: strcpy(stat, "Rusak"); break;
+        default: strcpy(stat, "Undefined"); break;
     }
 }
 
@@ -29,12 +29,12 @@ void displayAll(struct List* list) {
         return;
     }
 
-    char currCateg[MAX_STRING];
-    char currStat[MAX_STRING];
-    getCategStr(head->barang->category, currCateg);
-    getStatusStr(head->barang->status, currStat);
-
     while (head != NULL) {
+        char currCateg[MAX_STRING];
+        char currStat[MAX_STRING];
+        getCategStr(head->barang->category, currCateg);
+        getStatusStr(head->barang->status, currStat);
+
         printf("Seluruh Data Barang:\n");
         printf("ID Barang: %d\n", head->barang->id);
         printf("Nama     : %s\n", head->barang->name);
@@ -67,6 +67,7 @@ void summarizeAll(struct List* list) {
                 case 3: countCateg3++; break;
                 default: break;
             }
+        head = head->next;
     }
 
     printf("Ringkasan Inventaris:\n");
