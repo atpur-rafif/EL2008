@@ -49,7 +49,7 @@ void loop() {
         switch (choice) {
             case 1: {
                 struct Barang* newItem = (struct Barang*) malloc(sizeof(struct Barang));
-                if(newItem != NULL){
+                if(newItem == NULL){
                     Serial.print("-> Memori penuh");
                     break;
                 }

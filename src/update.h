@@ -1,6 +1,8 @@
 #ifndef UPDATE_H
 #define UPDATE_H
 
+#include <Arduino.h>
+
 #include <stdio.h>
 #include "struct.h"
 #include "search.h"
