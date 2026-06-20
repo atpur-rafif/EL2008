@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <string.h>
 #include "output.h"
+#include "Arduino.h"
+#include <string.h>
 
 void getCategStr(int cat, char* cate) {
     switch (cat) {
@@ -25,23 +25,23 @@ void displayAll(struct List* list) {
     struct List* head = list;
 
     if (head == NULL) {
-        printf("Data barang masih kosong\n");
+        Serial.println("Data barang masih kosong");
         return;
     }
 
     while (head != NULL) {
         char currCateg[MAX_STRING];
         char currStat[MAX_STRING];
+        
         getCategStr(head->barang->category, currCateg);
         getStatusStr(head->barang->status, currStat);
 
-        printf("Seluruh Data Barang:\n");
-        printf("ID Barang: %d\n", head->barang->id);
-        printf("Nama     : %s\n", head->barang->name);
-        printf("Kategori : %s\n", currCateg);
-        printf("Lokasi   : %s\n", head->barang->location);
-        printf("Status   : %s\n", currStat);
-        printf("PIC      : %s\n", head->barang->pic);
+        Serial.print("ID: "); Serial.print(head->barang->id);
+        Serial.print(" | Nama: "); Serial.print(head->barang->name);
+        Serial.print(" | Kategori: "); Serial.print(currCateg);
+        Serial.print(" | Lokasi: "); Serial.print(head->barang->location);
+        Serial.print(" | Status: "); Serial.print(currStat);
+        Serial.print(" | PIC: "); Serial.println(head->barang->pic);
 
         head = head->next;
     }
@@ -49,30 +49,26 @@ void displayAll(struct List* list) {
 
 void summarizeAll(struct List* list) {
     struct List* head = list;
-    int countCateg1 = 0;
-    int countCateg2 = 0;
-    int countCateg3 = 0;
-    int countBarang = 0;
+    int countCateg1 = 0, countCateg2 = 0, countCateg3 = 0, countBarang = 0;
 
     if (head == NULL) {
-        printf("Data barang masih kosong\n");
+        Serial.println("Data barang masih kosong");
         return;
     }
 
     while (head != NULL) {
-            countBarang++;
-            switch (head->barang->category) {
-                case 1: countCateg1++; break;
-                case 2: countCateg2++; break;
-                case 3: countCateg3++; break;
-                default: break;
-            }
-        head = head->next;
+        countBarang++;
+        switch (head->barang->category) {
+            case 1: countCateg1++; break;
+            case 2: countCateg2++; break;
+            case 3: countCateg3++; break;
+        }
+        head = head->next; 
     }
 
-    printf("Ringkasan Inventaris:\n");
-    printf("Total Semua Barang: %d item\n", countBarang);
-    printf(" - Sensor         : %d item\n", countCateg1);
-    printf(" - Mikrokontroler : %d item\n", countCateg2);
-    printf(" - Lainnya        : %d item\n", countCateg3);
+    Serial.println("Ringkasan Inventaris:");
+    Serial.print("Total Semua Barang: "); Serial.print(countBarang); Serial.println(" item");
+    Serial.print(" - Sensor         : "); Serial.print(countCateg1); Serial.println(" item");
+    Serial.print(" - Mikrokontroler : "); Serial.print(countCateg2); Serial.println(" item");
+    Serial.print(" - Lainnya        : "); Serial.print(countCateg3); Serial.println(" item");
 }
