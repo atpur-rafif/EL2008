@@ -1,21 +1,21 @@
 #include "update.h"
 
 void addBarang(struct List** list, struct Barang* barang) {
-    struct List* new = (struct List*) malloc(sizeof(struct List));
+    struct List* item = (struct List*) malloc(sizeof(struct List));
     struct List* current = *list;
 
-    new->barang = barang;
-    new->next = NULL;
+    item->barang = barang;
+    item->next = NULL;
 
     if (current == NULL) {
-        (*list) = new;
+        (*list) = item;
         return;
     }
 
     while (current->next != NULL) {
         current = current->next;
     }
-    current->next = new;
+    current->next = item;
 }
 
 void updateStatus(struct List* list, int id, int status, struct Barang** item) {
