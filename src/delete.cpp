@@ -17,11 +17,12 @@ void deleteBarang(struct List** list, int id, struct Barang** barang){
 		current = current->next;
 
 	if (current->next == NULL) {
-        *barang = NULL;
-        return;
-    }
+		*barang = NULL;
+		return;
+	}
 
 	struct List* item = current->next;
 	current->next = item->next;
 	*barang = item->barang;
+	free(item);
 }
