@@ -3,7 +3,7 @@
 void addBarang(struct List** list, struct Barang* barang) {
     struct List* item = (struct List*) malloc(sizeof(struct List));
     if (item == NULL) {
-        Serial.println("Memori penuh");
+        Serial.println("-> Memori penuh");
         return;
     }
 
