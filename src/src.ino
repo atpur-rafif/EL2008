@@ -53,6 +53,13 @@ void loop() {
                 Serial.println("\n--- Add barang ---");
                 Serial.print("ID Barang : ");
                 newItem->id = readIntFromSerial(); Serial.println(newItem->id);
+
+                struct Barang* itemSearch = NULL;
+                searchBarang(items, newItem->id, &itemSearch);
+                if(itemSearch != NULL){
+                    Serial.print("-> Duplikat ID");
+                    break;
+                }
                 
                 Serial.print("Nama      : ");
                 String nameStr = readStringFromSerial(); Serial.println(nameStr);
